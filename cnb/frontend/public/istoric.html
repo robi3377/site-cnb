@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block title %}
+  <title>File de istorie</title>
+{% endblock title %}
+
+    {% block content %}
+    <div id="content" class="grid gap-3 bg-[#123] w-[100vw] h-auto pt-16 -z-1">
+        <div class="absolute h-[90vh] top-[0vh] w-44 left-0">
+            <button onclick="moveLeft()" id="btn-left" class="absolute left-5 sm:top-[40vh] top-[37vh] rounded-full sm:p-2" style="transition-duration: 500ms;">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="md:w-28 md:h-24 w-12 h-10">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+            </button>
+        </div>
+        <div class="absolute h-[90vh] top-[0vh] w-44 right-0">
+            <button onclick="moveRight()" id="btn-right" class="absolute right-5 sm:top-[40vh] top-[37vh] rounded-full sm:p-2" style="transition-duration: 500ms;">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="md:w-28 md:h-24 w-12 h-10">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="text-base ml-8 pt-2">
+        <h1 class="font-noto font-semibold text-[#123] text-3xl pt-2 mb-5">File de istorie</h1>
+        <h4 class="font-noto font-semibold text-[#762424] text-lg mb-3">Clădirea Colegiului Național Bănățean din Timişoara a adăpostit instituții de învățământ încă de la înființare.</h4>
+        <div class="mb-3">
+            <h4 class="font-noto font-semibold text-[#762424] text-lg">Între 1773-1880</h4>
+            <p class="indent-8">aici a funcţionat Şcoala Elementară „Trivium” de pe lângă parohia din cartierul Iosefin.</p>
+        </div>
+        <div class="mb-3">
+            <h4 class="font-noto font-semibold text-[#762424] text-lg">Între 1881-1890</h4>
+            <p class="indent-8">în paralel cu Şcoala Elementară a funcţionat şi Şcoala Surorilor „Notre Dame“.</p>
+        </div>
+        <div class="mb-3">
+            <h4 class="font-noto font-semibold text-[#762424] text-lg">Între 1890-1924</h4>
+            <p class="indent-8">este abandonată vechea şcoală elementară, iar noua şcoală catolică îşi extinde perimetrul, adăugându-se aripa dinspre bulevardul Dragalina. Se spune că însuşi împăratul Franz Joseph a plantat arţarul care se găseşte şi astăzi în curtea principală.</p>
+        </div>
+        <div class="mb-3">
+            <h4 class="font-noto font-semibold text-[#762424] text-lg">În 1924</h4>
+            <p class="indent-8">Şcoala Surorilor „Notre Dame“ îşi lărgeşte sfera de activitate, înfiinţând Şcoala de Menaj „Regina Maria“.</p>
+        </div>
+        <div class="mb-3">
+            <h4 class="font-noto font-semibold text-[#762424] text-lg">În 1931</h4>
+            <p class="indent-8">odată cu înfiinţarea cursului liceal, instituţia devine Liceul Romano-Catolic de Fete „Notre Dame“.</p>
+        </div>
+        <div class="mb-3">
+            <h4 class="font-noto font-semibold text-[#762424] text-lg">În 1946</h4>
+            <p class="indent-8">Şcoala de Menaj „Regina Maria“ îşi schimbă denumirea în Şcoala Urbană de Gospodărie.</p>
+        </div>
+        <div class="mb-3">
+            <h4 class="font-noto font-semibold text-[#762424] text-lg">Ulterior, în 1947,</h4> 
+            <p class="indent-8">își schimbă din nou denumirea în  Şcoala Tehnică de Gospodărie Timişoara.</p>
+        </div>
+        <div class="mb-3">
+            <h4 class="font-noto font-semibold text-[#762424] text-lg">În 1948</h4>
+            <p class="indent-8">Liceul Romano - Catolic de Fete „Notre Dame“ devine Şcoala Normală de Fete Timişoara.</p>
+            <p class="indent-8">a fost mutată aici, de la Liceul „C. D. Loga“ Timişoara, secţia cu predare în limba sârbă. </p>
+            <p class="indent-8">odată cu reforma învăţământului, Şcoala Tehnică de Gospodărie devine Şcoala Pedagogică de Educatoare, iar Liceul Romano - Catolic de Fete „Notre Dame“ devine Şcoala Pedagogică de Fete.</p>
+        </div>
+        <div class="mb-3">
+            <h4 class="font-noto font-semibold text-[#762424] text-lg">În 1956</h4>
+            <p class="indent-8">noua denumire a instituţiilor adăpostite în complex este Şcoala Medie Nr. 7 Timişoara.</p>
+        </div>
+        <div class="mb-3">
+            <h4 class="font-noto font-semibold text-[#762424] text-lg">În 1961</h4>
+            <p class="indent-8">se înfiinţează o secţie germană şi o secţie maghiară a Şcolii Medii Nr. 7. Cea dintâi funcţionează şi astăzi, iar cea maghiară s-a desprins o dată cu înfiinţarea Liceului „Béla Bartók“.</p>
+        </div>
+        <div class="mb-3">
+            <h4 class="font-noto font-semibold text-[#762424] text-lg">Între 1965 si 1973</h4>
+            <p class="indent-8">instituţia funcţionează sub numele de Şcoala Medie Nr. 10 Timişoara.</p>
+        </div>
+        <div class="mb-3">
+            <h4 class="font-noto font-semibold text-[#762424] text-lg">Din 1973</h4>
+            <p class="indent-8">liceul primeşte noua denumire de Liceul Real-Umanist Nr. 1 Timişoara.</p>
+        </div>
+        <div class="mb-3">
+            <h4 class="font-noto font-semibold text-[#762424] text-lg">În 1977</h4>
+            <p class="indent-8">instituţia devine Liceul de Filologie-Istorie Timişoara.</p>
+        </div>
+        <div class="mb-3">
+            <h4 class="font-noto font-semibold text-[#762424] text-lg">În 1990</h4>
+            <p class="indent-8">se înfiinţează Liceul Sârbesc, iar Liceul de Filologie-Istorie îşi schimbă denumirea în Colegiul Bănăţean Timişoara.</p>
+        </div>
+        <div class="mb-3">
+            <h4 class="font-noto font-semibold text-[#762424] text-lg">Din 1999</h4>
+            <p class="indent-8">instituţia primeşte titulatura de Colegiul Naţional Bănăţean Timişoara, denumire sub care funcţionează şi astăzi.</p>
+        </div>
+    </div>
+{% endblock content %}
+        

@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{%block title%}
+<title>Contact</title>
+{%endblock title%}
+
+
+{% block content %}
+  
+  <div class="grid md:grid-cols-2 grid-cols-1 min-h-[100vh] pt-16">
+    <div class="flex flex-col justify-center items-center m-[20px]">
+      <div>
+          <div class="md:p-8 text-xl p-4 rounded-2xl bg-[#762424] text-white mb-5 shadow-black shadow-lg">
+              <div class="flex flex-row gap-3 items-center mb-5">
+                  <div>
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="40px" height="40px">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                      </svg>
+                  </div>
+                  <div>
+                      <h1 class="text-4xl divide-y divide-slate-200">Contact</h1>
+                  </div>
+              </div>
+              <div class="flex gap-3 my-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20px" height="20px">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 9v.906a2.25 2.25 0 01-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 001.183 1.981l6.478 3.488m8.839 2.51l-4.66-2.51m0 0l-1.023-.55a2.25 2.25 0 00-2.134 0l-1.022.55m0 0l-4.661 2.51m16.5 1.615a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V8.844a2.25 2.25 0 011.183-1.98l7.5-4.04a2.25 2.25 0 012.134 0l7.5 4.04a2.25 2.25 0 011.183 1.98V19.5z" />
+                  </svg>
+                  <div class="flex gap-3">
+                      <b>E-mail:</b>
+                      <div class="">cnb@colegiulbanatean.ro</div>
+                  </div>
+              </div>
+              <div class="flex items-center gap-3 my-1">  
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20px" height="20px">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                  </svg>
+                  <div class="flex gap-3 items-center">
+                      <b class="text-xl">Telefon:</b>
+                      <div>0256491714</div>
+                      <div>0256491713</div>
+                  </div>
+
+              </div>
+              <div class="flex gap-3 my-1">
+                  <div class="w-[100px] flex gap-3">
+                      <svg class="translate-y-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="height: 20px;">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
+                      </svg>            
+                      <b>Adresă:</b>
+                  </div>
+                  <div> Bulevardul 16 Decembrie 1989, Nr. 26, Timișoara, 300425, Timiș, România </div>
+              </div> 
+          </div>
+          <div class="p-8 rounded-2xl bg-[#762424] text-white mb-5 shadow-black shadow-lg">
+            <h3 class="text-5xl mb-4">Contactați-ne</h3>
+            <form class="flex flex-col gap-3 text-black" action="" method="POST">
+                {% csrf_token %}
+                <div class=" flex md:flex-row flex-col justify-between gap-3">
+                    <input class="md:w-[47%] text-lg rounded-3xl border-b-white border-b-[1px] p-3" placeholder="Nume" type="text" name="nume">
+                    <input class="md:w-[47%] text-lg rounded-3xl border-b-white border-b-[1px] p-3" placeholder="E-mail" type="text" name="email">
+                </div>
+                
+                <input class=" text-lg rounded-3xl border-b-white border-b-[1px] p-3" placeholder="Subiect" type="text" name="subiect">
+                <textarea class="h-16 text-lg rounded-3xl border-b-white border-b-[1px] p-3" placeholder="Mesaj" style="resize: none; " name="mesaj"></textarea>
+                <button type="submit">Trimite</button>
+            </form>
+            <h3 class="text-xl mt-4">Ne puteți găsi și pe rețelele de socializare: </h3>
+              <div class="flex flex-row gap-3 mt-3">
+                  <div class="flex items-center w-[50%]">
+                      <a class="flex items-center"  href="https://www.instagram.com/cse_cnb/">
+                          <div class="w-[40px] h-[40px]">
+                              <svg class="w-[40px] h-[40px]" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" clip-rule="evenodd" viewBox="0 0 24 24" id="instagram"><g transform="translate(-40 -40)"><rect fill="transparent"></rect><path fill="#FFFFFC" d="M110.9,199C110.9,195.744 108.256,193.1 105,193.1C105,193.1 95,193.1 95,193.1C91.744,193.1 89.1,195.744 89.1,199C89.1,199 89.1,209 89.1,209C89.1,212.256 91.744,214.9 95,214.9C95,214.9 105,214.9 105,214.9C108.256,214.9 110.9,212.256 110.9,209L110.9,199ZM109.1,199L109.1,209C109.1,211.263 107.263,213.1 105,213.1L95,213.1C92.737,213.1 90.9,211.263 90.9,209L90.9,199C90.9,196.737 92.737,194.9 95,194.9L105,194.9C107.263,194.9 109.1,196.737 109.1,199ZM104.89,203.238C104.575,201.109 102.891,199.425 100.762,199.11C100.524,199.074 100.284,199.057 100.043,199.057C97.355,199.057 95.143,201.269 95.143,203.957C95.143,206.645 97.355,208.857 100.043,208.857C102.731,208.857 104.943,206.645 104.943,203.957C104.943,203.716 104.926,203.476 104.89,203.238ZM103.11,203.502C103.132,203.653 103.143,203.805 103.143,203.957C103.143,205.657 101.744,207.057 100.043,207.057C98.343,207.057 96.943,205.657 96.943,203.957C96.943,202.256 98.343,200.857 100.043,200.857C100.195,200.857 100.347,200.868 100.498,200.89C101.845,201.09 102.91,202.155 103.11,203.502ZM105.5,197.6C105.997,197.6 106.4,198.003 106.4,198.5C106.4,198.997 105.997,199.4 105.5,199.4C105.003,199.4 104.6,198.997 104.6,198.5C104.6,198.003 105.003,197.6 105.5,197.6Z" transform="translate(-48 -152)"></path></g></svg>
+                          </div>
+                          <p class="text-base ml-[10px]">@cse_cnb</p>
+                      </a>
+                  </div>     
+                  <a class="flex items-center" href="https://www.facebook.com/colegiulbanatean">
+                      <svg class="w-[40px] h-[40px]" xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 48 48" id="facebook"><path fill="#FFFFFC" fill-rule="evenodd" d="M225.638 208H202.65a2.65 2.65 0 0 1-2.649-2.65v-42.7a2.649 2.649 0 0 1 2.65-2.65h42.701a2.649 2.649 0 0 1 2.649 2.65v42.7a2.65 2.65 0 0 1-2.649 2.65h-12.232v-18.588h6.24l.934-7.244h-7.174v-4.625c0-2.098.583-3.527 3.59-3.527l3.836-.002v-6.479c-.663-.088-2.94-.285-5.59-.285-5.53 0-9.317 3.376-9.317 9.575v5.343h-6.255v7.244h6.255V208z" transform="translate(-200 -160)"></path></svg>
+                      <p class="text-base ml-[10px]"> Colegiul Național Bănățean</p>
+                  </a>
+              </div>
+        </div>
+      </div>
+    </div>
+        <div>
+            <iframe class="w-[100%] md:h-[100%] h-[50vh] md:border-l-8 border-solid border-[#762424]" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2784.3366259176255!2d21.211533314931923!3d45.744396979105254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47455d76c60bfdbd%3A0x54430fe716d2e768!2zQ29sZWdpdWwgTmHIm2lvbmFsIELEg27Eg8ibZWFu!5e0!3m2!1sro!2sro!4v1680770585062!5m2!1sro!2sro" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+{% endblock content %}

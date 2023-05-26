@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{%block title%}
+<title>Echipa de teatru Heavenly Hell</title>
+{%endblock title%}
+
+
+{% block content %}
+ 
+    <div class="pt-20">
+        <div class="relative flex flex-col w-[100vw] h-[25vw] bg-cover bg-no-repeat bg-center" style="background-image:url(./assets/HH/logo\ hh.png);"></div>
+        <div class="w-[100vw] bg-[#F4F4F9] text-base pl-8 pr-16 -z-5 pb-3">
+            <h1 class="font-noto text-3xl font-semibold text-[#123] pb-3">Echipa de teatru Heavenly Hell</h1>
+            <div class="grid grid-cols-1 w-[100vw] justify-items-center">
+                <iframe class="content-center" src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fcolegiulbanatean%2Fvideos%2F1618141212021803%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+            </div>    
+            <div class="py-3">
+                <h4 class="font-noto text-lg font-semibold text-[#762424] pt-3 pb-2">Cine suntem?</h4>
+                <p class="indent-8">De peste 25 de ani elevii din școala noastră se exprimă artistic în cadrul trupei de teatru Heavenly Hell prin intermediul unor spectacole originale, scrise, regizate și jucate în fiecare an.</p>
+                <p class="indent-8">Performanțele ne sunt recunoscute prin participarea constantă la festivaluri precum Ingenious Drama (Bacău), Okaua (București) și Serile Teatrului Studențesc (București), de unde anul trecut ne-am întors acasă cu premiul pentru ,,Cel mai bun spectacol”.</p>
+                <p class="indent-8">Trupa este un nucleu de energie, creativitate, prietenie și amintiri frumoase în zilele lungi de repetiții și în toată țara.</p>
+                <p class="indent-8">Ne puteți urmări pe paginile de <a class="text-[#123]" href="https://www.instagram.com/heavenlyhelltimisoara/" target="_blank">Instagram</a> și <a class="text-[#123]" href="https://www.facebook.com/heavenlyhelltimisoara" target="_blank">Facebook</a> pentru a vedea mai multe despre ceea ce facem.</p>
+            </div>
+            <div>
+                <h4 class="font-noto text-lg font-semibold text-[#762424] pt-3 pb-2">Când vă puteți alătura și voi trupei noastre?</h4>
+                <p class="indent-8">În toamnă. La începutul anului școlar ne vom începe perioada de recrutare. Mai multe informații despre audiții vor fi publicate pe conturile noastre de <a class="text-[#123]" href="https://www.instagram.com/heavenlyhelltimisoara/" target="_blank">Instagram</a> și <a class="text-[#123]" href="https://www.facebook.com/heavenlyhelltimisoara" target="_blank">Facebook</a>.</p>
+            </div>
+        </div>
+    </div>
+    <div class="relative pt-12 pb-32 flex justify-center items-center bg-[#f4f8fb]">
+        <div class=" justify-center galery gap-6">
+            <div id="bgimage1" onclick="openImagePhone(1)" onmouseleave="lightup(1)" onmouseover="darken(1)" class="bg-no-repeat bg-cover bg-center rounded-3xl duration-500" style="background-image: url(./assets/HH/DSC08523.JPG); overflow: hidden;">
+                <div id="container1" class="w-full h-full bg-slate-300 opacity-50 translate-y-[100%] flex justify-center items-center duration-500">
+                    <button onclick="openImage(1)">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-24 h-24 duration-500">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        </svg>
+                    </button> 
+                </div>
+            </div>
+            <div id="bgimage2" onclick="openImagePhone(2)" onmouseleave="lightup(2)" onmouseover="darken(2)" class="bg-no-repeat bg-cover bg-center rounded-3xl duration-500" style="background-image: url(./assets/HH/image10.jpeg); overflow: hidden;">
+                <div id="container2" class="w-full h-full bg-slate-300 opacity-50 translate-y-[100%] flex justify-center items-center duration-500">
+                    <button onclick="openImage(2)">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-24 h-24 duration-500">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        </svg>
+                    </button> 
+                </div>
+            </div>
+            <div id="bgimage3" onclick="openImagePhone(3)" onmouseleave="lightup(3)" onmouseover="darken(3)" class="bg-no-repeat bg-cover bg-center rounded-3xl duration-500 col-span-2 row-span-2" style="background-image: url(./assets/HH/DSC_0437.JPEG); overflow: hidden;">
+                <div id="container3" class="w-full h-full bg-slate-300 opacity-50 translate-y-[100%] flex justify-center items-center duration-500">
+                    <button onclick="openImage(3)">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-24 h-24 duration-500">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        </svg>
+                    </button> 
+                </div>
+            </div>
+            <div id="bgimage4" onclick="openImagePhone(4)" onmouseleave="lightup(4)" onmouseover="darken(4)" class="bg-no-repeat bg-cover bg-center rounded-3xl duration-500 row-span-2" style="background-image: url(./assets/HH/DSC_0336.JPEG); overflow: hidden;">
+                <div id="container4" class="w-full h-full bg-slate-300 opacity-50 translate-y-[100%] flex justify-center items-center duration-500">
+                    <button onclick="openImage(4)">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-24 h-24 duration-500">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        </svg>
+                    </button> 
+                </div>
+            </div>
+            <div id="bgimage5" onclick="openImagePhone(5)" onmouseleave="lightup(5)" onmouseover="darken(5)" class="bg-no-repeat bg-cover bg-center rounded-3xl duration-500" style="background-image: url(./assets/HH/image13.jpeg); overflow: hidden;">
+                <div id="container5" class="w-full h-full bg-slate-300 opacity-50 translate-y-[100%] flex justify-center items-center duration-500">
+                    <button onclick="openImage(5)">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-24 h-24 duration-500">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        </svg>
+                    </button> 
+                </div>
+            </div>
+            <div id="bgimage6" onclick="openImagePhone(6)" onmouseleave="lightup(6)" onmouseover="darken(6)" class="bg-no-repeat bg-cover bg-center rounded-3xl duration-500" style="background-image: url(./assets/HH/image18.jpeg); overflow: hidden;">
+                <div id="container6" class="w-full h-full bg-slate-300 opacity-50 translate-y-[100%] flex justify-center items-center duration-500">
+                    <button onclick="openImage(6)">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-24 h-24 duration-500">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        </svg>
+                    </button> 
+                </div>
+            </div>            
+            <div id="bgimage7" onclick="openImagePhone(7)" onmouseleave="lightup(7)" onmouseover="darken(7)" class="bg-no-repeat bg-cover bg-center rounded-3xl duration-500" style="background-image: url(./assets/HH/image19.jpeg); overflow: hidden;">
+                <div id="container7" class="w-full h-full bg-slate-300 opacity-50 translate-y-[100%] flex justify-center items-center duration-500">
+                    <button onclick="openImage(7)">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-24 h-24 duration-500">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        </svg>
+                    </button> 
+                </div>
+            </div>
+            <div id="bgimage8" onclick="openImagePhone(8)" onmouseleave="lightup(8)" onmouseover="darken(8)" class="bg-no-repeat bg-cover bg-center rounded-3xl duration-500" style="background-image: url(./assets/HH/image21.jpeg); overflow: hidden;">
+                <div id="container8" class="w-full h-full bg-slate-300 opacity-50 translate-y-[100%] flex justify-center items-center duration-500">
+                    <button onclick="openImage(8)">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-24 h-24 duration-500">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        </svg>
+                    </button> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="openImage" class="z-10 w-[100vw] h-[calc(100vh-4rem)] top-16 translate-x-[100vw] flex justify-center items-center fixed bg-opacity-70 bg-black duration-500">
+        <button onclick="closeImage()" class="z-30 absolute top-0 left-2 h-12 w-12">
+            <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg> 
+        </button>
+        <div class="relative w-full h-[60vh] flex justify-center items-center">
+            <img id="openedImage" src="" alt="" class="z-[100] object-contain md:max-w-[80vw] md:max-h-[80vh] max-w-[90vw] max-h-[80vh]">
+        </div>
+    </div>
+
+{% endblock content %}

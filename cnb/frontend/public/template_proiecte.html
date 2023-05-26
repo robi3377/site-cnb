@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>{{proiect.titlu}}</title>
+{% endblock title %}
+
+
+{% block content %}
+  
+    <div class="pt-20">
+        <div class="relative flex flex-col w-[100vw] h-[20vw] bg-cover bg-no-repeat bg-center" style="background-image:url({{proiect.emblema.url}});"></div>
+        <div class="w-[100vw] bg-[#F4F4F9] text-base pl-8 pr-16 -z-5 pb-3">
+            <h1 class="font-noto text-3xl font-semibold text-[#123]">{{proiect.titlu}}</h1>
+            {% for component in componente %}
+            <h4 class="font-noto text-lg font-semibold text-[#762424] pt-3 pb-2">{{component.subtitlu}}</h4>
+            <p class="indent-8">{{component.paragraf}}</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="relative pt-12 pb-32 flex justify-center items-center bg-[#f4f8fb]">
+        <div class=" justify-center galery gap-6">
+            {% for poza in poze %}
+            {{poza | safe}}
+            {% endfor %}
+        </div>
+    </div>
+    <div id="openImage" class="z-10 w-[100vw] h-[calc(100vh-4rem)] top-16 translate-x-[100vw] flex justify-center items-center fixed bg-opacity-70 bg-black duration-500">
+        <button onclick="closeImage()" class="z-30 absolute top-0 left-2 h-12 w-12">
+            <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg> 
+        </button>
+        <div class="relative w-full h-[60vh] flex justify-center items-center">
+            <img id="openedImage" src="" alt="" class="z-[100] object-contain md:max-w-[80vw] md:max-h-[80vh] max-w-[90vw] max-h-[80vh]">
+        </div>
+    </div>
+
+{% endblock content %}
