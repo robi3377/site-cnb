@@ -151,7 +151,7 @@ def catedre(request):
 # /////////////////////////// NOT_FOUND //////////////////////////////////
 
 def not_found(request):
-    return render(request, '404.html')
+    return render(request, 'decoy.html')
 
 # /////////////////////////// INCARCARE_PROIECTE //////////////////////////////////
 
