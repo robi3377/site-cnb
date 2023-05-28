@@ -12,18 +12,18 @@
     <div class="h-[100vh] w-[100vw] bg-bottom bg-cover bg-fixed bg-no-repeat" style="background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(assets/colegiul_banatean.jpg);">
         <nav id="nav" class="z-50 h-16 w-[100vw] bg-[#762424] bg-opacity-0 flex justify-between items-center gap-4 fixed duration-500">
             <img class="z-40 h-14 md:ml-16 ml-10 fixed" src="./assets/CNB_sgV2-removebg-preview.png" alt="CNB logo">
-            <div class="z-40 md:ml-28 ml-24 flex flex-col fixed text-white text-sm">
+            <div class="z-40 md:ml-28 ml-24 md:flex hidden flex-col fixed text-white text-sm">
                 <p>Colegiul</p>
                 <p>Național</p>
                 <p>Bănățean</p>
             </div>
             <div class="h-16 w-[100vw] hidden xl:flex flex-row self-center items-center justify-center text-lg gap-10 fixed">
-                <a class="text-white px-6 h-[100%] flex items-center border-b-2 border-transparent hover:border-white duration-500" href="">Acasă</a>
-                <a class="text-white px-6 h-[100%] flex items-center border-b-2 border-transparent hover:border-white duration-500" href="/istoric">Istoric</a>
-                <a class="text-white px-6 h-[100%] flex items-center border-b-2 border-transparent hover:border-white duration-500" href="/catedre">Catedre</a>
-                <a class="text-white px-6 h-[100%] flex items-center border-b-2 border-transparent hover:border-white duration-500" href="/informatii">Informații</a>
-                <a class="text-white px-6 h-[100%] flex items-center border-b-2 border-transparent hover:border-white duration-500" href="/proiecte">Proiecte</a>
-                <a class="text-white px-6 h-[100%] flex items-center border-b-2 border-transparent hover:border-white duration-500" href="/contact">Contact</a>
+                <a class="text-white px-6 h-[100%] flex items-center border-b-2 border-transparent hover:border-white duration-500" href="./">Acasă</a>
+                <a class="text-white px-6 h-[100%] flex items-center border-b-2 border-transparent hover:border-white duration-500" href="./istoric">Istoric</a>
+                <a class="text-white px-6 h-[100%] flex items-center border-b-2 border-transparent hover:border-white duration-500" href="./catedre">Catedre</a>
+                <a class="text-white px-6 h-[100%] flex items-center border-b-2 border-transparent hover:border-white duration-500" href="./informatii">Informații</a>
+                <a class="text-white px-6 h-[100%] flex items-center border-b-2 border-transparent hover:border-white duration-500" href="./proiecte">Proiecte</a>
+                <a class="text-white px-6 h-[100%] flex items-center border-b-2 border-transparent hover:border-white duration-500" href="./contact">Contact</a>
             </div>
             <button class="xl:block hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" class="w-8 h-8 duration-500 fixed right-5 top-4 bg-opacity-60 hover:bg-slate-300 rounded-full p-1">
@@ -31,7 +31,7 @@
                 </svg>
             </button>
             <form onsubmit="Search(); return false" action="">
-                <input id="searchBar" class="xl:block hidden fixed right-16 top-3 rounded-3xl p-2 text-sm" type="text" name="" id="">
+                <input id="searchBar" class="w-[10vw] xl:block hidden fixed right-16 top-3 rounded-3xl p-2 text-sm" type="text" name="" id="">
             </form>
             <div onclick="secondaryMenu()" class="flex xl:hidden ml-[calc(100vw-5rem)] mr-7 fixed">
                 <svg class="w-8 h-8 z-50" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white">
@@ -41,22 +41,25 @@
         </nav>
         <div id="secondaryMenu" class="z-40 fixed right-0 translate-x-[250px] top-0 h-[100vh] w-[250px] bg-[#762424] duration-300">
             <div class="z-50 flex gap-3 flex-col p-6 mt-10 text-white text-xl">
-                <a href="">Acasă</a>
-                <a href="/istoric">Istoric</a>
-                <a href="/catedre">Catedre</a>
-                <a href="/informatii">Informații</a>
+                <a href="./">Acasă</a>
+                <a href="./istoric">Istoric</a>
+                <a href="./catedre">Catedre</a>
+                <a href="./informatii">Informații</a>
                 <div class="ml-4 text-lg flex flex-col">
-                    <a href="/anunturi">Anunțuri</a>
-                    <a href="">Ofertă educațională</a>
+                    <a href="./anunturi">Anunțuri</a>
+                    <a href="">Management</a>
+                    <a href="">Personal administrativ</a>
+                    <a href="">Ofertă educațională</a> 
+                    <a href="">Transferuri</a>
+                    <a href="">Înscrieri</a>
                     <a href="">Consiliul elevilor</a>
                     <a href="">Concursuri și olimpiade</a>
                     <a href="">Burse școlare</a>
                     <a href="">Examene</a> 
-                    <a href="">Administrativ</a>
                     <a href="">Biblioteca școlii</a>
                 </div>
-                <a href="/proiecte">Proiecte</a>
-                <a href="/contact">Contact</a>
+                <a href="./proiecte.html">Proiecte</a>
+                <a href="./contact.html">Contact</a>
             </div>
         </div>
         <div class="absolute h-20 w-[100vw] top-0 bg-gradient-to-b from-slate-800 to-transparent"></div>
@@ -80,23 +83,41 @@
             <div class="relative flex flex-col justify-center items-center h-full">
                 <div class="md:w-[40vw] w-[90vw] rounded-xl text-black" style="overflow:hidden;">
                     <div id="slideShow" class="md:w-[240vw] w-[540vw] h-[50vh] flex duration-500">
-                        <div id="singleSlide" class="md:w-[40vw] w-[90vw] h-[50vh] flex items-end bg-center bg-no-repeat bg-cover" style="background-image: url(./assets/scan0003.jpg);">
-                            <div class="w-full p-4 bg-[#f4f8fb]"><b>13 martie:</b></div>
+                        <div id="singleSlide" class="md:w-[40vw] w-[90vw] h-[50vh] flex">
+                            <div class="w-full p-4 bg-[#f4f8fb] flex flex-col justify-center items-center gap-3">
+                                <p class="w-[80%] md:text-3xl text-xl font-noto text-[#762424] flex justify-center border-b-2 border-[#762424]">Anunț1</p>
+                                <p class="w-[80%] md:text-xl text-base indent-8"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione, fugit ipsum nesciunt quaerat cumque at dignissimos enim! Adipisci consectetur animi iure similique. Consectetur neque rem harum molestiae, beatae odio eius dignissimos, recusandae est quod pariatur provident quam praesentium. A cumque aspernatur odio nisi debitis soluta vel fugiat suscipit voluptatem ipsa.</p>
+                            </div>
                         </div>
-                        <div class="md:w-[40vw] w-[90vw] h-[50vh] flex items-end bg-center bg-no-repeat bg-cover" style="background-image: url(./assets/scan0004.jpg);">
-                            <div class="w-full p-4 bg-[#f4f8fb]"><b>13 martie:</b></div>
+                        <div class="md:w-[40vw] w-[90vw] h-[50vh] flex">
+                            <div class="w-full p-4 bg-[#f4f8fb] flex flex-col  items-center gap-3">
+                                <p class="w-[80%] md:text-3xl text-xl font-noto text-[#762424] flex justify-center border-b-2 border-[#762424]">Anunț2</p>
+                                <p class="w-[80%] h-[calc(100%-41px)] flex justify-center items-center indent-8 "> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione, fugit ipsum nesciunt quaerat cumque at dignissimos enim! Adipisci consectetur animi iure similique. Consectetur neque rem harum molestiae, beatae odio eius dignissimos, recusandae est quod pariatur provident quam praesentium. A cumque aspernatur odio nisi debitis soluta vel fugiat suscipit voluptatem ipsa.</p>
+                            </div>
                         </div>
-                        <div class="md:w-[40vw] w-[90vw] h-[50vh] flex items-end bg-center bg-no-repeat bg-cover" style="background-image: url(./assets/scan0006.jpg);">
-                            <div class="w-full p-4 bg-[#f4f8fb]"><b>13 martie:</b></div>
+                        <div class="md:w-[40vw] w-[90vw] h-[50vh] flex">
+                            <div class="w-full p-4 bg-[#f4f8fb] flex flex-col justify-center items-center gap-3">
+                                <p class="w-[80%] md:text-3xl text-xl font-noto text-[#762424] flex justify-center border-b-2 border-[#762424]">Anunț3</p>
+                                <p class="w-[80%] md:text-xl text-base indent-8"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione, fugit ipsum nesciunt quaerat cumque at dignissimos enim! Adipisci consectetur animi iure similique. Consectetur neque rem harum molestiae, beatae odio eius dignissimos, recusandae est quod pariatur provident quam praesentium. A cumque aspernatur odio nisi debitis soluta vel fugiat suscipit voluptatem ipsa.</p>
+                            </div>
                         </div>
-                        <div class="md:w-[40vw] w-[90vw] h-[50vh] flex items-end bg-center bg-no-repeat bg-cover" style="background-image: url(./assets/scan0003.jpg);">
-                            <div class="w-full p-4 bg-[#f4f8fb]"><b>13 martie:</b></div>
+                        <div class="md:w-[40vw] w-[90vw] h-[50vh] flex">
+                            <div class="w-full p-4 bg-[#f4f8fb] flex flex-col justify-center items-center gap-3">
+                                <p class="w-[80%] md:text-3xl text-xl font-noto text-[#762424] flex justify-center border-b-2 border-[#762424]">Anunț4</p>
+                                <p class="w-[80%] md:text-xl text-base indent-8"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione, fugit ipsum nesciunt quaerat cumque at dignissimos enim! Adipisci consectetur animi iure similique. Consectetur neque rem harum molestiae, beatae odio eius dignissimos, recusandae est quod pariatur provident quam praesentium. A cumque aspernatur odio nisi debitis soluta vel fugiat suscipit voluptatem ipsa.</p>
+                            </div>                        
                         </div>
-                        <div class="md:w-[40vw] w-[90vw] h-[50vh] flex items-end bg-center bg-no-repeat bg-cover" style="background-image: url(./assets/scan0004.jpg);">
-                            <div class="w-full p-4 bg-[#f4f8fb]"><b>13 martie:</b></div>
+                        <div class="md:w-[40vw] w-[90vw] h-[50vh] flex">
+                            <div class="w-full p-4 bg-[#f4f8fb] flex flex-col justify-center items-center gap-3">
+                                <p class="w-[80%] md:text-3xl text-xl font-noto text-[#762424] flex justify-center border-b-2 border-[#762424]">Anunț5</p>
+                                <p class="w-[80%] md:text-xl text-base indent-8"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione, fugit ipsum nesciunt quaerat cumque at dignissimos enim! Adipisci consectetur animi iure similique. Consectetur neque rem harum molestiae, beatae odio eius dignissimos, recusandae est quod pariatur provident quam praesentium. A cumque aspernatur odio nisi debitis soluta vel fugiat suscipit voluptatem ipsa.</p>
+                            </div>                        
                         </div>
-                        <div class="md:w-[40vw] w-[90vw] h-[50vh] flex items-end bg-center bg-no-repeat bg-cover" style="background-image: url(./assets/scan0003.jpg);">
-                            <div class="w-full p-4 bg-[#f4f8fb]"><b>13 martie:</b></div>
+                        <div class="md:w-[40vw] w-[90vw] h-[50vh] flex">
+                            <div class="w-full p-4 bg-[#f4f8fb] flex flex-col justify-center items-center gap-3">
+                                <p class="w-[80%] md:text-3xl text-xl font-noto text-[#762424] flex justify-center border-b-2 border-[#762424]">Anunț1</p>
+                                <p class="w-[80%] md:text-xl text-base indent-8"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione, fugit ipsum nesciunt quaerat cumque at dignissimos enim! Adipisci consectetur animi iure similique. Consectetur neque rem harum molestiae, beatae odio eius dignissimos, recusandae est quod pariatur provident quam praesentium. A cumque aspernatur odio nisi debitis soluta vel fugiat suscipit voluptatem ipsa.</p>
+                            </div>                        
                         </div>
                     </div>
                 </div>    
