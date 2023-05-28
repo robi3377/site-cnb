@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import *
 import pandas as pd
+from django.contrib.auth.decorators import login_required
 
 # /////////////////////////// ANUNTURI //////////////////////////////////
 
@@ -67,7 +68,7 @@ def index(request):
     cod_poze = []
     for poza in poze:
         if contor == 3 or (contor-3) % 8 == 0:
-            x = f'''<div id="bgimage{contor}" onclick="openImagePhone({contor})" onmouseleave="lightup({contor})" onmouseover="darken({contor})" class="bg-no-repeat bg-cover bg-center rounded-3xl duration-500 col-span-2 row-span-2" style="background-image: url(./assets/{poza.poza}); overflow: hidden;">
+            x = f'''<div id="bgimage{contor}" onclick="openImagePhone({contor})" onmouseleave="lightup({contor})" onmouseover="darken({contor})" class="bg-no-repeat bg-cover bg-center rounded-3xl duration-500 col-span-2 row-span-2" style="background-image: url({poza.poza.url}); overflow: hidden;">
                 <div id="container{contor}" class="w-full h-full bg-slate-300 opacity-50 translate-y-[100%] flex justify-center items-center duration-500">
                     <button onclick="openImage({contor})">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-24 h-24 duration-500">
@@ -79,7 +80,7 @@ def index(request):
             cod_poze.append(x)
 
         elif contor == 4 or (contor-4) % 8 == 0:
-            x = f'''<div id="bgimage{contor}" onclick="openImagePhone({contor})" onmouseleave="lightup({contor})" onmouseover="darken({contor})" class="bg-no-repeat bg-cover bg-center rounded-3xl duration-500 row-span-2" style="background-image: url(./assets/{poza.poza}); overflow: hidden;">
+            x = f'''<div id="bgimage{contor}" onclick="openImagePhone({contor})" onmouseleave="lightup({contor})" onmouseover="darken({contor})" class="bg-no-repeat bg-cover bg-center rounded-3xl duration-500 row-span-2" style="background-image: url({poza.poza.url}); overflow: hidden;">
                         <div id="container{contor}" class="w-full h-full bg-slate-300 opacity-50 translate-y-[100%] flex justify-center items-center duration-500">
                             <button onclick="openImage({contor})">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-24 h-24 duration-500">
@@ -91,7 +92,7 @@ def index(request):
             cod_poze.append(x)
             
         else:
-            x = f'''<div id="bgimage{contor}" onclick="openImagePhone({contor})" onmouseleave="lightup({contor})" onmouseover="darken({contor})" class="bg-no-repeat bg-cover bg-center rounded-3xl duration-500" style="background-image: url(./assets/{poza.poza}); overflow: hidden;">
+            x = f'''<div id="bgimage{contor}" onclick="openImagePhone({contor})" onmouseleave="lightup({contor})" onmouseover="darken({contor})" class="bg-no-repeat bg-cover bg-center rounded-3xl duration-500" style="background-image: url({poza.poza.url}); overflow: hidden;">
                         <div id="container{contor}" class="w-full h-full bg-slate-300 opacity-50 translate-y-[100%] flex justify-center items-center duration-500">
                             <button onclick="openImage({contor})">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-24 h-24 duration-500">
@@ -147,25 +148,14 @@ def catedre(request):
     print(dic)
     return render(request, 'catedre.html', dic)
 
-# ///////////////////////////////////////////////////////////////
+# /////////////////////////// NOT_FOUND //////////////////////////////////
 
-from .models import Proiecte
-def test(request):
-#     proiect = Proiecte.objects.get(titlu='Test1')
-#     componente = Componente.objects.filter(model=proiect.id)
-#     poze = Poze.objects.filter(model=proiect.id)
-
-    context = {
-        # 'proiect': proiect,
-        # 'componente': componente,
-        # 'poze': poze,
-        'comanda': '<p style="color: red;">TEST</p>'
-    }
-    return render(request, 'test.html', context)
-# ///////////////////////////////////////////////////////////////
+def not_found(request):
+    return render(request, '404.html')
 
 # /////////////////////////// INCARCARE_PROIECTE //////////////////////////////////
 
+@login_required(login_url=not_found)
 def incarcare_proiecte(request):
     if request.method == 'POST':
     
@@ -349,7 +339,7 @@ def template_proiecte(request, pk):
     cod_poze = []
     for poza in poze:
         if contor == 3 or (contor-3) % 8 == 0:
-            x = f'''<div id="bgimage{contor}" onclick="openImagePhone({contor})" onmouseleave="lightup({contor})" onmouseover="darken({contor})" class="bg-no-repeat bg-cover bg-center rounded-3xl duration-500 col-span-2 row-span-2" style="background-image: url(./assets/{poza.poza}); overflow: hidden;">
+            x = f'''<div id="bgimage{contor}" onclick="openImagePhone({contor})" onmouseleave="lightup({contor})" onmouseover="darken({contor})" class="bg-no-repeat bg-cover bg-center rounded-3xl duration-500 col-span-2 row-span-2" style="background-image: url({poza.poza.url}); overflow: hidden;">
                 <div id="container{contor}" class="w-full h-full bg-slate-300 opacity-50 translate-y-[100%] flex justify-center items-center duration-500">
                     <button onclick="openImage({contor})">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-24 h-24 duration-500">
@@ -361,7 +351,7 @@ def template_proiecte(request, pk):
             cod_poze.append(x)
 
         elif contor == 4 or (contor-4) % 8 == 0:
-            x = f'''<div id="bgimage{contor}" onclick="openImagePhone({contor})" onmouseleave="lightup({contor})" onmouseover="darken({contor})" class="bg-no-repeat bg-cover bg-center rounded-3xl duration-500 row-span-2" style="background-image: url(./assets/{poza.poza}); overflow: hidden;">
+            x = f'''<div id="bgimage{contor}" onclick="openImagePhone({contor})" onmouseleave="lightup({contor})" onmouseover="darken({contor})" class="bg-no-repeat bg-cover bg-center rounded-3xl duration-500 row-span-2" style="background-image: url({poza.poza.url}); overflow: hidden;">
                         <div id="container{contor}" class="w-full h-full bg-slate-300 opacity-50 translate-y-[100%] flex justify-center items-center duration-500">
                             <button onclick="openImage({contor})">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-24 h-24 duration-500">
@@ -373,7 +363,7 @@ def template_proiecte(request, pk):
             cod_poze.append(x)
             
         else:
-            x = f'''<div id="bgimage{contor}" onclick="openImagePhone({contor})" onmouseleave="lightup({contor})" onmouseover="darken({contor})" class="bg-no-repeat bg-cover bg-center rounded-3xl duration-500" style="background-image: url(./assets/{poza.poza}); overflow: hidden;">
+            x = f'''<div id="bgimage{contor}" onclick="openImagePhone({contor})" onmouseleave="lightup({contor})" onmouseover="darken({contor})" class="bg-no-repeat bg-cover bg-center rounded-3xl duration-500" style="background-image: url({poza.poza.url}); overflow: hidden;">
                         <div id="container{contor}" class="w-full h-full bg-slate-300 opacity-50 translate-y-[100%] flex justify-center items-center duration-500">
                             <button onclick="openImage({contor})">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-24 h-24 duration-500">

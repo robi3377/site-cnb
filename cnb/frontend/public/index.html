@@ -161,6 +161,17 @@
             {% endfor %}
         </div>
     </div>
+
+    <div id="openImage" class="z-10 w-[100vw] h-[calc(100vh-4rem)] top-16 translate-x-[100vw] flex justify-center items-center fixed bg-opacity-70 bg-black duration-500">
+        <button onclick="closeImage()" class="z-30 absolute top-0 left-2 h-12 w-12">
+            <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg> 
+        </button> 
+        <div class="relative w-full h-[60vh] flex justify-center items-center">
+            <img id="openedImage" src="" alt="" class="z-[100] object-contain md:max-w-[80vw] md:max-h-[80vh] max-w-[90vw] max-h-[80vh]">
+        </div> 
+    </div>
     
     <footer class="bg-[#123] font-roboto text-base text-[#999999] ">
         <div class="flex md:flex-row flex-col pt-4 md:justify-between mx-10">

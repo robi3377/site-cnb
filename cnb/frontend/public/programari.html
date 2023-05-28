@@ -8,7 +8,7 @@
 {% block content %}
 
     <div class="min-h-[100vh] w-[100vw] flex flex-col gap-14 justify-center items-center">
-        <div class="fixed w-[80vw] grid grid-cols-7 text-3xl text-gray-500">
+        <div class="absolute w-[80vw] grid grid-cols-7 text-3xl text-gray-500">
             <div></div>
             <div></div>
             <div class="justify-self-center">Luni</div>
@@ -45,9 +45,11 @@
                 <p class="w-[100%] h-[15%] border-2 flex justify-center items-center">13:00-14:00</p>
                 <p class="w-[100%] h-[15%] border-2 flex justify-center items-center">14:00-15:00</p>
             </div>
+
             {% for programare in programari_Festiva %}
             {{programare|safe}}
             {% endfor %}
+            
         </div>
     </div>
 

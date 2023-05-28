@@ -18,7 +18,7 @@ urlpatterns = [
     path('anunturi', views.anunturi),
     path('olimpici', views.olimpici),
     path('programari', views.programari),
-    path('test', views.test),
-    path('<str:pk>', views.template_proiecte),
+    path('proiecte/<str:pk>', views.template_proiecte),
+    path('404', views.not_found),
 
 ]

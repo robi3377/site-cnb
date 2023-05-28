@@ -2,12 +2,14 @@
 
 {% block title %}
 <title>{{proiect.titlu}}</title>
+<!-- <link rel="icon" type="image/x-icon" href="/public/assets/CNB_sgV2-removebg-preview.png"> -->
+
 {% endblock title %}
 
 
 {% block content %}
   
-    <div class="pt-20">
+    <div class="pt-16">
         <div class="relative flex flex-col w-[100vw] h-[20vw] bg-cover bg-no-repeat bg-center" style="background-image:url({{proiect.emblema.url}});"></div>
         <div class="w-[100vw] bg-[#F4F4F9] text-base pl-8 pr-16 -z-5 pb-3">
             <h1 class="font-noto text-3xl font-semibold text-[#123]">{{proiect.titlu}}</h1>
@@ -25,6 +27,7 @@
             {% endfor %}
         </div>
     </div>
+
     <div id="openImage" class="z-10 w-[100vw] h-[calc(100vh-4rem)] top-16 translate-x-[100vw] flex justify-center items-center fixed bg-opacity-70 bg-black duration-500">
         <button onclick="closeImage()" class="z-30 absolute top-0 left-2 h-12 w-12">
             <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white">
