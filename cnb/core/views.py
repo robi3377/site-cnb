@@ -280,20 +280,20 @@ def organizarea_claselor(request):
             if contor < 5:
                 cod.append(f'''
                                 <div class="flex flex-col">
-                                    <div class="flex text-base md:text-lg gap-3 pt-2">
+                                    <div class="flex flex-row justify-between md:text-lg gap-3 pt-2">
                                         <p>{obiect.clasa} {obiect.litera}</p>
-                                        <p>învățătoare {obiect.diriginte}</p>
-                                        <p>{obiect.nr_elevi}</p>
+                                        <p class="justify-items-start">învățătoare {obiect.diriginte}</p>
+                                        <p>{obiect.nr_elevi} elevi</p>
                                     </div>
                                 </div>
                 ''')
             else:
                 cod.append(f'''
                                 <div class="flex flex-col">
-                                    <div class="flex text-base md:text-lg gap-3 pt-2">
+                                    <div class="flex flex-row justify-between md:text-lg gap-3 pt-2">
                                         <p>{obiect.clasa} {obiect.litera}</p>
                                         <p>diriginte {obiect.diriginte}</p>
-                                        <p>{obiect.nr_elevi}</p>
+                                        <p>{obiect.nr_elevi} elevi</p>
                                     </div>
                                 </div>
                 ''')

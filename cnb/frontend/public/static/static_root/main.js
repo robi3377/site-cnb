@@ -8,7 +8,7 @@ let contor = 1;
 let isDesktop;
 window.addEventListener('DOMContentLoaded', function() {});
 ///////////////////////////////////INDEX/////////////////////////////////////////////////
-if (window.location.pathname=='/index.html' || window.location.pathname=='/' || window.location.pathname=='/public/index.html' || window.location.pathname=='/public/anunturi.html' || window.location.pathname=='/anunturi.html') { // "/public/index.html" trebuie folosit numai pe proiectul local
+if (window.location.pathname=='/index.html' || window.location.pathname=='/' || window.location.pathname=='/public/index.html' || window.location.pathname=='/public/anunturi.html' || window.location.pathname=='/anunturi.html' || window.location.pathname=='/istoric' || window.location.pathname=='/istoric.html') { // "/public/index.html" trebuie folosit numai pe proiectul local
     setInterval(() => {
         autoSlideShow();
       }, "5000");
@@ -27,11 +27,13 @@ function openImagePhone(value){
     let bgImage = document.querySelector("#bgimage"+value).style.backgroundImage.slice(5,-2);
     document.querySelector("#openedImage").src = bgImage;
 }
+
 function openImage(value){
     document.querySelector("#openImage").style.transform = "translateX(0px)";
     let bgImage = document.querySelector("#bgimage"+value).style.backgroundImage.slice(5,-2);
     document.querySelector("#openedImage").src = bgImage;
 }
+
 function closeImage(){  
     document.querySelector("#openImage").style.transform = "translateX(100vw)";
 }
@@ -98,7 +100,7 @@ let searchResults = [
         "url":"https://www.tutorialspoint.com/how-to-stop-refreshing-the-page-on-submit-in-javascript",
     },
 ]
-
+searchResults.push()
 function Search(){
     for( let i = 0 ; i < searchResults.length ; i++ )
         if(document.querySelector("#searchBar").value == searchResults[i].textSearch)
@@ -229,7 +231,7 @@ function dropCatedre(value){
 
 ///////////////////////////////////INFORMATII/////////////////////////////////////////////////
 let boolInformatii = [];
-for (let index = 1; index <= 3; index++) {
+for (let index = 1; index <= 6; index++) {
     boolInformatii[index] = true;
 }
 function dropInformatii(value){
@@ -244,13 +246,31 @@ function dropInformatii(value){
     boolInformatii[value] = !boolInformatii[value]; 
 }
 
-///////////////////////////////////GENERAL/////////////////////////////////////////////////
+///////////////////////////////////CONTACT/////////////////////////////////////////////////
 if (window.location.pathname=='/contact.html' || window.location.pathname=='/public/contact.html') {
     let inputs = document.querySelector("form").childNodes;
     for( let i  = 1 ; i <= inputs.length ; i = i + 2 ){
         inputs[i].style.outline = "none";
     }
     }
+
+///////////////////////////////////CREARE PROIECT/////////////////////////////////////////////////
+if (window.location.pathname=='/creare%20proiect.html' || window.location.pathname=='/public/creare%20proiect.html') {
+    function previewBeforeUpload(id){
+        document.querySelector("#"+id).addEventListener("change",function(e){
+          if(e.target.files.length == 0){
+            return;
+          }
+          let file = e.target.files[0];
+          let url = URL.createObjectURL(file);
+          document.querySelector("#preview-image").src = url;
+        });
+      }
+      
+      previewBeforeUpload("file");
+
+      
+}
 
 ///////////////////////////////////GENERAL/////////////////////////////////////////////////
 let droped = false;
@@ -261,7 +281,6 @@ function dropDown(value){
             document.querySelector("#dropDown").style.opacity = "1";
         },100)
         droped = true;
-        console.log(3);
     }
     else if (value == 1){
         if(droped == true){document.querySelector("#dropDown").style.opacity = "1";
