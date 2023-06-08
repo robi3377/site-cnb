@@ -23,30 +23,32 @@
                        
                             {% for prof in sefi_Lb_Romana %}
                                 {% if prof.doctor %}
-                                    <p class="font-semibold text-[#762424]">profesor {{prof.titulatura}} {{prof.nume_complet}} doc (șef catedră)tor</p>
+                                    <p>profesor dr. {{prof.titulatura}} {{prof.nume_complet}} </p>
                                 {% else %}
-                                    <p class="font-semibold text-[#762424]">profesor {{prof.titulatura}} {{prof.nume_complet}} (șef catedră)</p>
+                                    <p>profesor {{prof.titulatura}} {{prof.nume_complet}}</p>
                                 {% endif %}
                             {% endfor %}
 
-                        {% for prof in Lb_Romana1 %}
+                            {% for prof in Lb_Romana1 %}
 
                                 {% if prof.doctor %}
-                                    <p>profesor {{prof.titulatura}} {{prof.nume_complet}} doctor</p>
+                                    <p>profesor dr. {{prof.titulatura}} {{prof.nume_complet}} </p>
                                 {% else %}
                                     <p>profesor {{prof.titulatura}} {{prof.nume_complet}}</p>
                                 {% endif %}
 
-                        {% endfor %}
+                            {% endfor %}
                     </div>
                     <div class="flex flex-col ml-2 md:ml-4 md:indent-6 text-sm w-[100%] md:w-[80%] md:text-base">
                         {% for prof in Lb_Romana2 %}
-                            {% if prof.doctor %}
-                                <p>profesor {{prof.titulatura}} {{prof.nume_complet}} doctor</p>
-                            {% else %}
-                                <p>profesor {{prof.titulatura}} {{prof.nume_complet}}</p>
-                            {% endif %}
-                        {% endfor %}
+
+                                {% if prof.doctor %}
+                                    <p>profesor dr. {{prof.titulatura}} {{prof.nume_complet}} </p>
+                                {% else %}
+                                    <p>profesor {{prof.titulatura}} {{prof.nume_complet}}</p>
+                                {% endif %}
+
+                            {% endfor %}
                     </div>
                 </div>
             </div> 
@@ -67,9 +69,9 @@
                        
                         {% for prof in sefi_Informatica %}
                             {% if prof.doctor %}
-                                <p class="font-semibold text-[#123]">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor (șef catedră)</p>
+                                <p class="font-semibold text-[#123]">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor</p>
                             {% else %}
-                                <p class="font-semibold text-[#123]">profesor {{prof.titulatura}} {{prof.nume_complet}} (șef catedră)</p>
+                                <p class="font-semibold text-[#123]">profesor {{prof.titulatura}} {{prof.nume_complet}}</p>
                             {% endif %}
                         {% endfor %}
 
@@ -111,9 +113,9 @@
                        
                         {% for prof in sefi_Matematica %}
                             {% if prof.doctor %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor (șef catedră) </p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor </p>
                             {% else %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} (șef catedră) </p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} </p>
                             {% endif %}
                         {% endfor %}
 
@@ -154,9 +156,9 @@
                        
                         {% for prof in sefi_Fizica %}
                             {% if prof.doctor %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor (șef catedră) </p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor </p>
                              {% else %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} (șef catedră) </p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} </p>
                              {% endif %}
                         {% endfor %}
 
@@ -198,9 +200,9 @@
                        
                         {% for prof in sefi_Biologie %}
                             {% if prof.doctor %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor (șef catedră)</p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor</p>
                             {% else %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} (șef catedră)</p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}}</p>
                            {% endif %}
                         {% endfor %}
 
@@ -242,9 +244,9 @@
                        
                         {% for prof in sefi_Chimie %}
                             {% if prof.doctor %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor (șef catedră) </p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor </p>
                             {% else %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} (șef catedră) </p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} </p>
                             {% endif %}
                         {% endfor %}
 
@@ -286,9 +288,9 @@
                        
                         {% for prof in sefi_Geografie %}
                             {% if prof.doctor %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor (șef catedră) </p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor </p>
                             {% else %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} (șef catedră) </p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} </p>
                             {% endif %}
                         {% endfor %}
 
@@ -330,9 +332,9 @@
                        
                         {% for prof in sefi_Istorie %}
                             {% if prof.doctor %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor (șef catedră) </p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor </p>
                             {% else %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} (șef catedră) </p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} </p>
                             {% endif %}
                         {% endfor %}
 
@@ -374,9 +376,9 @@
                        
                         {% for prof in sefi_Ed_Fizica %}
                             {% if prof.doctor %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor (șef catedră) </p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor </p>
                             {% else %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} (șef catedră) </p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} </p>
                             {% endif %}
                         {% endfor %}
 
@@ -418,9 +420,9 @@
                        
                         {% for prof in sefi_Limba_Engleza %}
                             {% if prof.doctor %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor (șef catedră) </p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor </p>
                             {% else %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} (șef catedră) </p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} </p>
                             {% endif %}
                         {% endfor %}
 
@@ -461,17 +463,17 @@
                     <div class="flex flex-col ml-2 md:ml-4 md:indent-6 text-sm w-[100%] md:w-[80%] md:text-base">
                         {% for prof in sefi_Limba_Franceza %}
                             {% if prof.doctor %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor (șef catedră) </p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor </p>
                             {% else %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} (șef catedră) </p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} </p>
                             {% endif %}
                         {% endfor %}
                         <p class="font-semibold"></p>
                         {% for prof in sefi_Limba_Germana %}
                             {% if prof.doctor %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor (șef catedră) </p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor </p>
                             {% else %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} (șef catedră) </p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} </p>
                             {% endif %}
                         {% endfor %}
 
@@ -513,17 +515,17 @@
                        
                         {% for prof in sefi_Limba_Franceza %}
                             {% if prof.doctor %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor (șef catedră) </p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor </p>
                             {% else %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} (șef catedră) </p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} </p>
                             {% endif %}
                         {% endfor %}
                         <p class="font-semibold"></p>
                         {% for prof in sefi_Limba_Germana %}
                             {% if prof.doctor %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor (șef catedră) </p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor </p>
                             {% else %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} (șef catedră) </p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} </p>
                             {% endif %}
                         {% endfor %}
 
@@ -565,9 +567,9 @@
                        
                         {% for prof in sefi_Socio_Umane %}
                             {% if prof.doctor %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor (șef catedră)</p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor</p>
                             {% else %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} (șef catedră)</p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}}</p>
                             {% endif %}
                         {% endfor %}
 
@@ -609,9 +611,9 @@
                        
                         {% for prof in sefi_Religie %}
                             {% if prof.doctor %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor (șef catedră)</p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor</p>
                             {% else %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} (șef catedră)</p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}}</p>
                             {% endif %}
                         {% endfor %}
 
@@ -653,9 +655,9 @@
                        
                         {% for prof in sefi_ED_P_M_T %}
                             {% if prof.doctor %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor (șef catedră)</p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} doctor</p>
                             {% else %}
-                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}} (șef catedră)</p>
+                                <p class="font-semibold">profesor {{prof.titulatura}} {{prof.nume_complet}}</p>
                             {% endif %}
                         {% endfor %}
 

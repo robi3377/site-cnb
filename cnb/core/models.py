@@ -25,9 +25,9 @@ class Profesori(models.Model):
         ED_PLASTICA_MUZICALA_TEHNOLOGICA = 'ED_P_M_T', _('EDUCATIE PLASTICA, MUZICALA SI TEHNOLOGICA')
 
     class Titulaturi(models.TextChoices):
-        GRD1 = 'Grad 1', _('Grad 1')
-        GRD2 = 'Grad 2', _('Grad 2')
-        GRD3 = 'Grad 3', _('Grad 3')
+        GRD1 = 'grad 1', _('grad 1')
+        GRD2 = 'grad 2', _('grad 2')
+        GRD3 = 'grad 3', _('grad 3')
         DEBUTANT = 'Debutant', _('Debutant')
         DEFINITIV = "Definitiv", _('Definitiv')
 
@@ -73,9 +73,18 @@ class Proiecte(models.Model):
 
     def __str__(self):
         return self.titlu
-
+    
 class Poze(models.Model):
+
     poza = models.ImageField(upload_to='poze_proiecte/')
+    model = models.ForeignKey(Proiecte, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.model)+str(self.id)
+    
+class Documente(models.Model):
+
+    document = models.FileField(upload_to='documente_proiecte/')
     model = models.ForeignKey(Proiecte, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -140,7 +149,7 @@ class Programari(models.Model):
 
 class Organizare_Clase(models.Model):
     class Clase(models.TextChoices):
-        PREG = 'Pregătitoare', _('Pregătitoare')
+        PREG = 'Preg.', _('Preg.')
         I = 'I', _('I')
         II = 'II', _('II')
         III = 'III', _('III')
@@ -159,7 +168,7 @@ class Organizare_Clase(models.Model):
         max_length=255,
         choices=Clase.choices)
     litera = models.CharField(max_length=15)
-    nr_elevi = models.CharField(max_length=255)
+    sala = models.CharField(max_length=255)
 
     def __str__(self):
         return self.clasa + ' ' + self.litera

@@ -19,7 +19,38 @@
             {% endfor %}
         </div>
     </div>
-
+    <div class="w-[100%] min-h-[20vh] font-noto text-3xl font-semibold my-10 flex flex-col items-center">
+        <div class="md:w-[80vw] w-[90vw] font-roboto text-lg font-extralight mt-10 grid md:grid-cols-2 grid-cols-1 gap-10">
+            <!-- <div class="flex gap-3 justify-center items-center">
+                <a href="./assets/inscrieri/APROBARE_CRITERII-SPECIFICE-DE-DEPARTAJARE_2023_2024.pdf" class="w-[85px] h-[100px] shadow-xl rounded-xl bg-cover bg-center" style="background-image: url(https://img.freepik.com/icones-gratuites/pdf_318-187733.jpg);">
+                </a>
+                <a href="./assets/inscrieri/APROBARE_CRITERII-SPECIFICE-DE-DEPARTAJARE_2023_2024.pdf">Aprobare inscrieri</a>
+            </div>
+            <div class="flex gap-3 justify-center items-center">
+                <a href="./assets/inscrieri/APROBARE_CRITERII-SPECIFICE-DE-DEPARTAJARE_2023_2024.pdf" class="w-[85px] h-[100px] shadow-xl rounded-xl bg-cover bg-center" style="background-image: url(https://img.freepik.com/icones-gratuites/pdf_318-187733.jpg);">
+                </a>
+                <a href="./assets/inscrieri/APROBARE_CRITERII-SPECIFICE-DE-DEPARTAJARE_2023_2024.pdf">Aprobare inscrieri</a>
+            </div>
+            <div class="flex gap-3 justify-center items-center">
+                <a href="./assets/inscrieri/APROBARE_CRITERII-SPECIFICE-DE-DEPARTAJARE_2023_2024.pdf" class="w-[85px] h-[100px] shadow-xl rounded-xl bg-cover bg-center" style="background-image: url(https://img.freepik.com/icones-gratuites/pdf_318-187733.jpg);">
+                </a>
+                <a href="./assets/inscrieri/APROBARE_CRITERII-SPECIFICE-DE-DEPARTAJARE_2023_2024.pdf">Aprobare inscrieri</a>
+            </div>
+            <div class="flex gap-3 justify-center items-center">
+                <a href="./assets/inscrieri/APROBARE_CRITERII-SPECIFICE-DE-DEPARTAJARE_2023_2024.pdf" class="w-[85px] h-[100px] shadow-xl rounded-xl bg-cover bg-center" style="background-image: url(https://img.freepik.com/icones-gratuites/pdf_318-187733.jpg);">
+                </a>
+                <a href="./assets/inscrieri/APROBARE_CRITERII-SPECIFICE-DE-DEPARTAJARE_2023_2024.pdf">Aprobare inscrieri</a>
+            </div> -->
+            {% for document, nume in documente %}
+            <div class="flex gap-3 items-center">
+                <a href="/assets/{{document.document}}" class="w-[85px] h-[100px] shadow-xl rounded-xl bg-cover bg-center" style="background-image: url(https://img.freepik.com/icones-gratuites/pdf_318-187733.jpg);">
+                </a>
+                <a href="/assets/{{document.document}}">{{nume}}</a>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
     <div class="relative pt-12 pb-32 flex justify-center items-center bg-[#f4f8fb]">
         <div class=" justify-center galery gap-6">
             {% for poza in poze %}

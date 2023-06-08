@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profesori, ExcelFile, Proiecte, Poze, Componente, Anunturi, Olimpici, Programari, Organizare_Clase
+from .models import Profesori, ExcelFile, Proiecte, Documente, Poze, Componente, Anunturi, Olimpici, Programari, Organizare_Clase
 
 class ProfesoriAdmin(admin.ModelAdmin):
     search_fields = ['nume', 'prenume', 'catedra', 'titulatura', 'doctor']
@@ -9,6 +9,7 @@ class ProfesoriAdmin(admin.ModelAdmin):
 admin.site.register(Profesori, ProfesoriAdmin)
 admin.site.register(ExcelFile)
 admin.site.register(Proiecte)
+admin.site.register(Documente)
 admin.site.register(Poze)
 admin.site.register(Componente)
 admin.site.register(Anunturi)

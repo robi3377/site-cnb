@@ -80,7 +80,7 @@ def index(request):
             cod_poze.append(x)
 
         elif contor == 4 or (contor-4) % 8 == 0:
-            x = f'''<div id="bgimage{contor}" onclick="openImagePhone({contor})" onmouseleave="lightup({contor})" onmouseover="darken({contor})" class="bg-no-repeat bg-cover bg-center rounded-3xl duration-500 row-span-2" style="background-image: url({poza.poza.url}); overflow: hidden;">
+            x = f'''<div id="bgimage{contor}" onclick="openImagePhone({contor})" onmouseleave="lightup({contor})" onmouseover="darken({contor})" class="bg-no-repeat bg-cover bg-center rounded-3xl duration-500 row-span-2 " style="background-image: url({poza.poza.url}); overflow: hidden;">
                         <div id="container{contor}" class="w-full h-full bg-slate-300 opacity-50 translate-y-[100%] flex justify-center items-center duration-500">
                             <button onclick="openImage({contor})">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-24 h-24 duration-500">
@@ -145,7 +145,7 @@ def catedre(request):
 
         materie2=materie[int((len(materie)+len(sefi_catedre))/2)-len(sefi_catedre):]
         dic.update({f'{catedra}2':materie2})
-    print(dic)
+
     return render(request, 'catedre.html', dic)
 
 # /////////////////////////// NOT_FOUND //////////////////////////////////
@@ -158,17 +158,14 @@ def not_found(request):
 @login_required(login_url=not_found)
 def incarcare_proiecte(request):
     if request.method == 'POST':
-    
+
         emblema = request.FILES.get('emblema')
         titlu = request.POST.get('titlu')
         subtitlu = request.POST.getlist('subtitlu[]')
         paragraf = request.POST.getlist('paragraf[]')
         tip = request.POST.get('tip')
-        poze = request.FILES.getlist('poze[]')
 
         proiect = Proiecte.objects.create(titlu=titlu, emblema=emblema, tip=tip)
-        print(subtitlu)
-        print(poze)
 
         for subtitle, paragraph in zip(subtitlu, paragraf):
             if subtitle.strip() == '' and paragraph.strip() == '':
@@ -176,15 +173,28 @@ def incarcare_proiecte(request):
             else:
                 componente = Componente.objects.create(subtitlu=subtitle, paragraf=paragraph, model=proiect)
                 componente.save()
-        
-        for p in poze:
-            poza = Poze.objects.create(poza=p, model=proiect)
-            poza.save()
+
+
+        for file in request.FILES.getlist('poze[]'):
+            file_type = file.content_type
+
+            if file_type.startswith('image'):
+                    poza = Poze.objects.create(poza=file, model=proiect)
+                    poza.save()
+
+            else:
+                    doc = Documente.objects.create(document=file, model=proiect)
+                    doc.save()
 
 
         return render(request, 'incarcare_proiect.html')
     else:
         return render(request, 'incarcare_proiect.html')
+#//////////////////////////////////////////////////
+
+def test(request):
+    return render(request, 'test.html')
+
 
 # ////////////////////////////////////////////////////////////////////
 
@@ -229,7 +239,7 @@ def istoric(request):
 
 def organizarea_claselor(request):
     clase = [
-        'Pregătitoare',
+        'Preg.',
         'I',
         'II',
         'III',
@@ -260,7 +270,7 @@ def organizarea_claselor(request):
                             <h1 class="font-noto text-3xl font-bold text-[#123] flex justify-center items-center mb-5">Învățământ liceal</h1>
                             ''')
 
-        if clasa == 'Pregătitoare':
+        if clasa == 'Preg.':
             cod.append('''  <div class="border-2 border-zinc-400 p-4 rounded-3xl">
                             <h2 class="font-noto text-xl font-semibold text-[#762424] border-b-2 border-zinc-400">Clasele pregătitoare</h2>
                             ''')
@@ -277,26 +287,22 @@ def organizarea_claselor(request):
         obiecte = Organizare_Clase.objects.filter(clasa=clasa).order_by('litera')
 
         for obiect in obiecte:
+            cod.append('<div class="grid grid-cols-3 w-[100%] md:text-lg text-sm grid-template-column pt-2">')
             if contor < 5:
                 cod.append(f'''
-                                <div class="flex flex-col">
-                                    <div class="flex flex-row justify-between md:text-lg gap-3 pt-2">
-                                        <p>{obiect.clasa} {obiect.litera}</p>
-                                        <p class="justify-items-start">învățătoare {obiect.diriginte}</p>
-                                        <p>{obiect.nr_elevi} elevi</p>
-                                    </div>
-                                </div>
+                                
+                                <p>{obiect.clasa} {obiect.litera}</p>
+                                <p>{obiect.diriginte}</p>
+                                <p class="justify-self-end">sala {obiect.sala}</p>
+                                    
                 ''')
             else:
                 cod.append(f'''
-                                <div class="flex flex-col">
-                                    <div class="flex flex-row justify-between md:text-lg gap-3 pt-2">
-                                        <p>{obiect.clasa} {obiect.litera}</p>
-                                        <p>diriginte {obiect.diriginte}</p>
-                                        <p>{obiect.nr_elevi} elevi</p>
-                                    </div>
-                                </div>
+                                <p>{obiect.clasa} {obiect.litera}</p>
+                                <p>{obiect.diriginte}</p>
+                                <p class="justify-self-end">sala {obiect.sala}</p>
                 ''')
+            cod.append('</div>')
 
         cod.append('</div>')
 
@@ -309,6 +315,15 @@ def organizarea_claselor(request):
     }
     return render(request, 'organizarea_claselor.html', context)
 
+# /////////////////////////// ADMINISTRATIV //////////////////////////////////
+
+def administrativ(request):
+    return render(request, 'template_administrativ.html')
+    
+
+
+
+
 # /////////////////////////// PROIECTE //////////////////////////////////
 
 def proiecte(request):
@@ -316,7 +331,7 @@ def proiecte(request):
     context = {
         'proiecte': proiect
     }
-    print(proiect)
+
     return render(request, 'proiecte.html', context)
 
 # /////////////////////////// ACTIVITATI EXTRASCOLARE //////////////////////////////////
@@ -326,15 +341,16 @@ def activitati_extrascolare(request):
     context = {
         'proiecte': proiect
     }
-    print(proiect)
+
     return render(request, 'activitati_extrascolare.html', context)
 
 # /////////////////////////// TEMPLATE_PROIECTE //////////////////////////////////
 
 def template_proiecte(request, pk):
-    proiect = Proiecte.objects.get(titlu=pk)
+    proiect = Proiecte.objects.filter(titlu=pk).first()
     componente = Componente.objects.filter(model=proiect.id)
     poze = Poze.objects.filter(model=proiect.id)
+    doc = Documente.objects.filter(model=proiect.id)
     contor = 1
     cod_poze = []
     for poza in poze:
@@ -376,15 +392,23 @@ def template_proiecte(request, pk):
             
         contor += 1
 
+    nume_doc = []
+    for d in doc:
+        nume = str(d.document).split('/')[-1]
+        nume_doc.append(nume)
+    
+    documente = zip(doc, nume_doc)
+
     context={
         'proiect': proiect,
         'componente': componente,
+        'documente': documente,
         'poze':cod_poze
     }
     return render(request, 'template_proiecte.html', context)
 
-def template(request):
-    return render(request, 'template.html')
+def transferuri(request):
+    return render(request, 'template_documente.html')
 
 def template_noutati(request):
     return render(request, 'template_noutati.html')
@@ -398,42 +422,45 @@ def database(request):
         obj = ExcelFile.objects.create(file = response)
         path = response.file
         df = pd.read_excel(path).fillna('').values.tolist()
-        for lista in df:
-            litera = str(lista[1]).strip().split('_')[1]
-            clasa = str(lista[1]).strip().split('_')[0]
-            diriginte = str(lista[2]).title()
-            nr_elevi = lista[3]
 
-            if clasa == 'PREG.':
-                obiect = Organizare_Clase.objects.create(
-                    diriginte=diriginte,
-                    clasa='Pregătitoare',
-                    litera=litera, 
-                    nr_elevi=nr_elevi
-                    )
-            else:
-                obiect = Organizare_Clase.objects.create(
-                    diriginte=diriginte,
-                    clasa=clasa,
-                    litera=litera, 
-                    nr_elevi=nr_elevi
-                    )
-            obiect.save()
+# ///////////////////// PRIMARA_GIMNAZIU //////////////////////////
+        # for lista in df:
+        #     litera = str(lista[1]).strip().split('_')[1]
+        #     clasa = str(lista[1]).strip().split('_')[0]
+        #     diriginte = str(lista[2]).title()
+        #     sala = str(lista[4])
 
+        #     if clasa == 'PREG.':
+        #         obiect = Organizare_Clase.objects.create(
+        #             diriginte=diriginte,
+        #             clasa='Preg.',
+        #             litera=litera, 
+        #             sala=sala
+        #             )
+        #     else:
+        #         obiect = Organizare_Clase.objects.create(
+        #             diriginte=diriginte,
+        #             clasa=clasa,
+        #             litera=litera, 
+        #             sala=sala
+        #             )
+        #     obiect.save()
+
+# /////////////// LICEU ////////////////////
         # for lista in df:
         #     litera = str(lista[2]).split(' ')[1:]
         #     litera = ' '.join(litera)
-        #     print(litera)
+
         #     clasa = str(lista[2]).split(' ')[0]
-        #     print(clasa)
+
         #     diriginte = str(lista[1]).title()
-        #     nr_elevi = lista[3]
+        #     sala = str(lista[4])
 
         #     obiect = Organizare_Clase.objects.create(
         #         diriginte=diriginte,
         #         clasa=clasa,
         #         litera=litera, 
-        #         nr_elevi=nr_elevi
+        #         sala=sala
         #         )
         #     obiect.save()
 
@@ -441,147 +468,147 @@ def database(request):
 
 
 
-        # for lis in df[5:-2]:
-        #     nume = lis[3]
-        #     ini_tata = str(lis[4])
-        #     prenume = lis[5]
-        #     catedra = str(lis[6])
-        #     doc = lis[9]
-        #     grad = lis[10]
+        for lis in df[5:-2]:
+            nume = lis[3]
+            ini_tata = str(lis[4])
+            prenume = lis[5]
+            catedra = str(lis[6])
+            doc = lis[9]
+            grad = lis[10]
 
-        #     if catedra == 'FILOSOFIE; LOGICA, ARGUMENTARE SI COMUNICARE':
-        #         catedra = 'Socio_Umane'
+            if catedra == 'FILOSOFIE; LOGICA, ARGUMENTARE SI COMUNICARE':
+                catedra = 'Socio_Umane'
 
-        #     elif catedra == 'EDUCATIE FIZICA SI SPORT':
-        #         catedra = 'Ed_Fizica'
+            elif catedra == 'EDUCATIE FIZICA SI SPORT':
+                catedra = 'Ed_Fizica'
 
-        #     elif catedra == 'MUZICA':
-        #         catedra = 'ED_P_M_T'
+            elif catedra == 'MUZICA':
+                catedra = 'ED_P_M_T'
 
-        #     elif catedra == 'CULTURA CIVICA - STUDII SOCIALE':
-        #         catedra = 'Socio_Umane'
+            elif catedra == 'CULTURA CIVICA - STUDII SOCIALE':
+                catedra = 'Socio_Umane'
 
-        #     elif catedra == 'INVATATOR/INSTITUTOR PENTRU INVATAMANTUL PRIMAR/PROFESOR PENTRU INVATAMANTUL PRIMAR (IN LIMBA ROMANA)':
-        #         continue
+            elif catedra == 'INVATATOR/INSTITUTOR PENTRU INVATAMANTUL PRIMAR/PROFESOR PENTRU INVATAMANTUL PRIMAR (IN LIMBA ROMANA)':
+                continue
 
-        #     elif catedra == 'INVATAMANT PRIMAR':
-        #         continue
+            elif catedra == 'INVATAMANT PRIMAR':
+                continue
 
-        #     elif catedra == 'INVATATOR/INSTITUTOR PENTRU INVATAMANTUL PRIMAR/PROFESOR PENTRU INVATAMANTUL PRIMAR (IN LIMBA GERMANA)':
-        #         continue
+            elif catedra == 'INVATATOR/INSTITUTOR PENTRU INVATAMANTUL PRIMAR/PROFESOR PENTRU INVATAMANTUL PRIMAR (IN LIMBA GERMANA)':
+                continue
 
-        #     elif catedra == 'SOCIOLOGIE':
-        #         catedra = 'Socio_Umane'
+            elif catedra == 'SOCIOLOGIE':
+                catedra = 'Socio_Umane'
 
-        #     elif catedra == 'DESEN':
-        #         catedra = 'ED_P_M_T'
+            elif catedra == 'DESEN':
+                catedra = 'ED_P_M_T'
 
-        #     elif catedra == 'EDUCATIE MUZICALA':
-        #         catedra = 'ED_P_M_T'
+            elif catedra == 'EDUCATIE MUZICALA':
+                catedra = 'ED_P_M_T'
 
-        #     elif catedra == 'STIINTE SOCIALE':
-        #         catedra = 'Socio_Umane'
+            elif catedra == 'STIINTE SOCIALE':
+                catedra = 'Socio_Umane'
 
-        #     elif catedra == 'PSIHOLOGIE':
-        #         catedra = 'Socio_Umane'
+            elif catedra == 'PSIHOLOGIE':
+                catedra = 'Socio_Umane'
 
-        #     elif catedra == 'LIMBA LATINA':
-        #         catedra = 'Lb_Romana'
+            elif catedra == 'LIMBA LATINA':
+                catedra = 'Lb_Romana'
 
-        #     elif catedra == 'ISTORIE - LIMBA GERMANA':
-        #         catedra = 'Istorie'
+            elif catedra == 'ISTORIE - LIMBA GERMANA':
+                catedra = 'Istorie'
 
-        #     elif catedra == 'LIMBA SI LITERATURA ROMANA - LITERATURA UNIVERSALA':
-        #         catedra = 'Lb_Romana'
+            elif catedra == 'LIMBA SI LITERATURA ROMANA - LITERATURA UNIVERSALA':
+                catedra = 'Lb_Romana'
 
-        #     elif catedra == 'LIMBA SI LITERATURA ROMANA':
-        #         catedra = 'Lb_Romana'
+            elif catedra == 'LIMBA SI LITERATURA ROMANA':
+                catedra = 'Lb_Romana'
 
-        #     elif catedra == 'RELIGIE ORTODOXA':
-        #         catedra = 'Religie'
+            elif catedra == 'RELIGIE ORTODOXA':
+                catedra = 'Religie'
 
-        #     elif catedra == 'EDUCAȚIE TEHNOLOGICĂ':
-        #         catedra = 'ED_P_M_T'
+            elif catedra == 'EDUCAȚIE TEHNOLOGICĂ':
+                catedra = 'ED_P_M_T'
 
-        #     elif catedra == 'EDUCATIE TEHNOLOGICA':
-        #         catedra = 'ED_P_M_T'
+            elif catedra == 'EDUCATIE TEHNOLOGICA':
+                catedra = 'ED_P_M_T'
 
-        #     elif catedra == 'GANDIRE CRITICA':
-        #         catedra = 'Socio_Umane'
+            elif catedra == 'GANDIRE CRITICA':
+                catedra = 'Socio_Umane'
 
-        #     elif catedra == 'LIMBA ENGLEZA':
-        #         catedra = 'Limba_Engleza'
+            elif catedra == 'LIMBA ENGLEZA':
+                catedra = 'Limba_Engleza'
 
-        #     elif catedra == 'LIMBA GERMANA':
-        #         catedra = 'Limba_Germana'
+            elif catedra == 'LIMBA GERMANA':
+                catedra = 'Limba_Germana'
 
-        #     elif catedra == 'LIMBA FRANCEZA':
-        #         catedra = 'Limba_Franceza'
+            elif catedra == 'LIMBA FRANCEZA':
+                catedra = 'Limba_Franceza'
 
-        #     elif catedra == 'GANDIRE CRITICA':
-        #         catedra = 'Socio_Umane'
+            elif catedra == 'GANDIRE CRITICA':
+                catedra = 'Socio_Umane'
 
-        #     elif catedra == 'GANDIRE CRITICA':
-        #         catedra = 'Socio_Umane'
+            elif catedra == 'GANDIRE CRITICA':
+                catedra = 'Socio_Umane'
 
-        #     else:
-        #         catedra = catedra.title().strip()
+            else:
+                catedra = catedra.title().strip()
             
-        #     if grad == 'GRAD DID I':
-        #         grad = 'Grad 1'
+            if grad == 'GRAD DID I':
+                grad = 'grad 1'
 
-        #     if grad == 'GRAD DID II':
-        #         grad = 'Grad 2'
+            if grad == 'GRAD DID II':
+                grad = 'grad 2'
 
-        #     if grad == 'GRAD DID III':
-        #         grad = 'Grad 3'
+            if grad == 'GRAD DID III':
+                grad = 'grad 3'
 
-        #     if grad == 'GRAD DIDI':
-        #         grad = 'Grad 1'
+            if grad == 'GRAD DIDI':
+                grad = 'grad 1'
 
-        #     if grad == 'GRAD DIDII':
-        #         grad = 'Grad 2'
+            if grad == 'GRAD DIDII':
+                grad = 'grad 2'
 
-        #     if grad == 'GRAD DIDIII':
-        #         grad = 'Grad 3'
+            if grad == 'GRAD DIDIII':
+                grad = 'grad 3'
 
-        #     if grad == 'DEBUTANT':
-        #         grad = 'Debutant'
+            if grad == 'DEBUTANT':
+                grad = 'Debutant'
 
-        #     if grad == 'DEFINITIV':
-        #         grad = 'Definitiv'
+            if grad == 'DEFINITIV':
+                grad = 'Definitiv'
 
-        #     if grad == 'DEF':
-        #         grad = 'Definitiv'
+            if grad == 'DEF':
+                grad = 'Definitiv'
 
-        #     if grad == 'DOCTORAT':
-        #         doc = True
-        #         grad = 'Grad 1'
-        #     else:
-        #         if doc == 'DOCTORAT':
-        #             doc=True
-        #         else:
-        #             doc=False
+            if grad == 'DOCTORAT':
+                doc = True
+                grad = 'grad 1'
+            else:
+                if doc == 'DOCTORAT':
+                    doc=True
+                else:
+                    doc=False
 
-        #     if ini_tata == '':
-        #         pass
-        #     else:
-        #         if ini_tata.strip()[-1] != '.':
-        #             ini_tata = ini_tata+'.'
+            if ini_tata == '':
+                pass
+            else:
+                if ini_tata.strip()[-1] != '.':
+                    ini_tata = ini_tata+'.'
 
 
-        #         prenume = str(prenume).title()
-        #         prenume_f = str(prenume)+' '+str(ini_tata)
+                prenume = str(prenume).title()
+                prenume_f = str(prenume)+' '+str(ini_tata)
 
-        #     nume = str(nume)
+            nume = str(nume)
             
-        #     pr = Profesori.objects.create( 
-        #         prenume = prenume_f,
-        #         nume = nume,
-        #         nume_complet = prenume_f + ' ' + nume,
-        #         catedra = catedra, 
-        #         titulatura = grad,
-        #         doctor = doc,
-        #         sef_catedra = False
-        #         )
+            pr = Profesori.objects.create( 
+                prenume = prenume_f,
+                nume = nume,
+                nume_complet = prenume_f + ' ' + nume,
+                catedra = catedra, 
+                titulatura = grad,
+                doctor = doc,
+                sef_catedra = False
+                )
     return render(request, 'database.html')
