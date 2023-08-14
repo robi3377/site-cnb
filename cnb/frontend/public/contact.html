@@ -6,8 +6,7 @@
 
 
 {% block content %}
-  
-  <div class="grid md:grid-cols-2 grid-cols-1 min-h-[100vh] pt-16">
+<div class="grid md:grid-cols-2 grid-cols-1 min-h-[100vh] pt-16">
     <div class="flex flex-col justify-center items-center m-[20px]">
       <div>
           <div class="md:p-8 text-xl p-4 rounded-2xl bg-[#762424] text-white mb-5 shadow-black shadow-lg">
@@ -52,18 +51,6 @@
               </div> 
           </div>
           <div class="p-8 rounded-2xl bg-[#762424] text-white mb-5 shadow-black shadow-lg">
-            <h3 class="text-5xl mb-4">Contactați-ne</h3>
-            <form class="flex flex-col gap-3 text-black" action="" method="POST">
-                {% csrf_token %}
-                <div class=" flex md:flex-row flex-col justify-between gap-3">
-                    <input class="md:w-[47%] text-lg rounded-3xl border-b-white border-b-[1px] p-3" placeholder="Nume" type="text" name="nume">
-                    <input class="md:w-[47%] text-lg rounded-3xl border-b-white border-b-[1px] p-3" placeholder="E-mail" type="text" name="email">
-                </div>
-                
-                <input class=" text-lg rounded-3xl border-b-white border-b-[1px] p-3" placeholder="Subiect" type="text" name="subiect">
-                <textarea class="h-16 text-lg rounded-3xl border-b-white border-b-[1px] p-3" placeholder="Mesaj" style="resize: none; " name="mesaj"></textarea>
-                <button type="submit" class="md:w-[47%] text-lg text-white rounded-3xl border-white border-[2px] p-3 self-center hover:shadow-2xl duration-300">Trimite</button>
-            </form>
             <h3 class="text-xl mt-4">Ne puteți găsi și pe rețelele de socializare: </h3>
               <div class="flex flex-row gap-3 mt-3">
                   <div class="flex items-center w-[50%]">
