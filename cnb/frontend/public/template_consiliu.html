@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+  <title>Consiliul administrativ</title>
+
+{% endblock title %}
+
+{% block content %}
+
+<div class="pt-24 w-[100vw] flex flex-col justify-center items-center">
+    <h1 class="font-noto sm:text-3xl text-xl">
+      Consiliul administrativ și educativ
+    </h1>
+    <div
+      class="md:w-[70vw] w-screen md:min-h-[80vh] min-h-[20vh] grid md:grid-cols-4 grid-cols-2 my-8"
+    >
+      <div class="flex flex-col items-center border-x-2">
+        {% for nume, contor in context_html1 %}
+        <p
+          id="function{{contor}}"
+          onmouseover="appearFunctions({{contor}})"
+          onmouseleave="appearPersonNames({{contor}})"
+          class="py-1 my-1 w-full flex justify-center items-center rounded-md hover:bg-[#762424] hover:text-white duration-500"
+        >{{nume}}</p>
+        {% endfor %}
+      </div>
+      <div class="flex flex-col items-center border-x-2">
+        {% for nume, contor in context_html2 %}
+        <p
+          id="function{{contor}}"
+          onmouseover="appearFunctions({{contor}})"
+          onmouseleave="appearPersonNames({{contor}})"
+          class="py-1 my-1 w-full flex justify-center items-center rounded-md hover:bg-[#762424] hover:text-white duration-500"
+        >{{nume}}</p>
+        {% endfor %}
+      </div>
+      <div class="flex flex-col items-center border-x-2">
+      {% for nume, contor in context_html3 %}
+        <p
+          id="function{{contor}}"
+          onmouseover="appearFunctions({{contor}})"
+          onmouseleave="appearPersonNames({{contor}})"
+          class="py-1 my-1 w-full flex justify-center items-center rounded-md hover:bg-[#762424] hover:text-white duration-500"
+        >{{nume}}</p>
+        {% endfor %}
+    </div>
+      <div class="flex flex-col items-center border-x-2">
+        {% for nume, contor in context_html4 %}
+        <p
+          id="function{{contor}}"
+          onmouseover="appearFunctions({{contor}})"
+          onmouseleave="appearPersonNames({{contor}})"
+          class="py-1 my-1 w-full flex justify-center items-center rounded-md hover:bg-[#762424] hover:text-white duration-500"
+        >{{nume}}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+<script>
+  const jsonData = JSON.parse('{{ json_data|escapejs }}');
+</script>
+
+{% endblock content %}

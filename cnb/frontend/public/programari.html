@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{%block title%}
+<title>Programări</title>
+{%endblock title%}
+
+
+{% block content %}
+
+    <div class="min-h-[100vh] w-[100vw] pt-[80px] flex flex-col gap-3 items-center justify-center">
+        <div class="w-[80vw] grid grid-cols-7 text-3xl text-gray-500">
+            <div></div>
+            <div></div>
+            <div class="justify-self-center flex flex-col items-center">
+                <p>Luni</p>
+                <p>05.06</p>
+            </div>
+            <div class="justify-self-center flex flex-col items-center">
+                <p>Marți</p>
+                <p>06.06</p>
+            </div>
+            <div class="justify-self-center flex flex-col items-center">
+                <p>Miercuri</p>
+                <p>07.06</p>
+            </div>
+            <div class="justify-self-center flex flex-col items-center">
+                <p>Joi</p>
+                <p>08.06</p>
+            </div>
+            <div class="justify-self-center flex flex-col items-center">
+                <p>Vineri</p>
+                <p>09.06</p>
+            </div>
+        </div>
+        <div class="w-[80vw] grid grid-cols-7 text-3xl items-center">
+            <div class="w-[100%] h-[100%] flex items-center justify-center border-2">Director</div>
+            <div class="w-[100%] h-[100%] flex flex-col items-center border-2">
+                <p class="w-[100%] h-[15%] border-2 flex justify-center items-center">8:00-9:00</p>
+                <p class="w-[100%] h-[15%] border-2 flex justify-center items-center">9:00-10:00</p>
+                <p class="w-[100%] h-[15%] border-2 flex justify-center items-center">10:00-11:00</p>
+                <p class="w-[100%] h-[15%] border-2 flex justify-center items-center">11:00-12:00</p>
+                <p class="w-[100%] h-[15%] border-2 flex justify-center items-center">12:00-13:00</p>
+                <p class="w-[100%] h-[15%] border-2 flex justify-center items-center">13:00-14:00</p>
+                <p class="w-[100%] h-[15%] border-2 flex justify-center items-center">14:00-15:00</p>
+            </div>
+            
+            {% for programare in programari_Multimedia %}
+            {{programare|safe}}
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock content %}

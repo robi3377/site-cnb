@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{%block title%}
+<title>Bibliotecă</title>
+{%endblock title%}
+
+
+{% block content %}
+
+
+    <div class="pt-12 w-[100vw] min-h-[70vh] flex flex-col items-center">
+        <div class="lg:w-[60vw] md:w-[80vw] w-[90vw]">
+            <h1 class="w-full flex justify-center md:text-6xl text-4xl font-noto my-4">
+                BIBLIOTECA
+            </h1>
+            <form action="" method="post">
+                {% csrf_token %}
+                <input id="searchBar" name="searchBar"
+                    class="w-[100%] xl:block rounded-3xl p-4 text-sm border-2 outline-0 border-[#762424] bg-transparent"
+                    type="text" name="" id="" />
+            </form>
+            <div class="w-full min-h-[50vh] grid md:grid-cols-2 grid-cols-1 gap-x-10 items-center my-4">
+                {% for carte in carti %}
+
+                <div class="w-full p-2 flex flex-col justify-between items-center border-b-2">
+                    <center>
+                        <p>{{carte.nume}}</p>
+                    </center>
+                        <p>{{carte.autor}}</p>
+                </div>
+                
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="w-full h-auto text-xl text-gray-500 flex justify-center items-center gap-1 pb-4">
+        <a href="/biblioteca_carti{{pagina_anterioara}}">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6 hover:text-black duration-500">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+        </a>
+        {% for pagina in pagini %}
+        {% if pagina == pagina_curenta %}
+
+        <a href="/biblioteca_carti{{pagina}}" class="hover:text-black duration-500 px-2 border-2 border-[#762424] rounded-full">{{pagina}}</a>
+
+        {% elif pagina == '...' %}
+
+        <p>. . .</p>
+        
+        {% else %}
+
+        <a href="/biblioteca_carti{{pagina}}" class="hover:text-black duration-500 px-2">{{pagina}}</a>
+
+        {% endif %}
+        {% endfor %}
+
+        <a href="/biblioteca_carti{{pagina_urmatoare}}">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6 hover:text-black duration-500">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+        </a>
+    </div>
+
+{% endblock content %}

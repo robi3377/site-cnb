@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Creare proiect</title>
+{% endblock title %}
+
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<div class="w-[100vw] min-h-[100vh] grid grid-cols-2 pt-[80px]">
+    <form class="flex flex-col items-center gap-4" action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input class="absolute left-[calc(50%-225px)] p-4 border-2 rounded-3xl flex justify-center items-center" type="file" name="intake">
+
+        <button class="absolute right-[calc(50%-181px)] p-4 border-2 rounded-3xl flex justify-center items-center" type="submit">Creare</button>
+    </form>
+    
+</div>
+<script src="./static/test.js"></script>
+
+{% endblock content %}

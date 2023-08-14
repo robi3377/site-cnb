@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>{{tip}}</title>
+{% endblock title %}
+
+
+{% block content %}  
+
+{% if anunturi_slide %}
+<div class="relative flex flex-col justify-center items-center h-full pt-20">
+    <div id="container" class="md:w-[50vw] w-[90vw] rounded-xl text-black shadow-2xl" style="overflow:hidden;">
+        <div id="slideShow" class="md:w-[300vw] w-[540vw] h-[50vh] flex duration-500">
+            
+            {% for anunt in anunturi_slide %}
+            <div id="singleSlide" class="md:w-[50vw] w-[90vw] h-[50vh] flex">
+                <div class="w-full p-4 bg-[#f4f8fb] flex flex-col justify-center items-center gap-3">
+                    <p class="w-[80%] md:text-3xl text-xl font-noto text-[#762424] flex justify-center text-center border-b-2 border-[#762424]">{{anunt.titlu}}</p>
+                    <p class="w-[80%] md:text-xl text-base indent-8">{{anunt.text}}</p>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- <div class="md:w-[50vw] w-[90vw] h-[50vh] flex">
+                <div class="w-full p-4 bg-[#f4f8fb] flex flex-col  items-center gap-3">
+                    <p class="w-[80%] md:text-3xl text-xl font-noto text-[#762424] flex justify-center border-b-2 border-[#762424]">Anunț2</p>
+                    <p class="w-[80%] h-[calc(100%-41px)] flex justify-center items-center indent-8 "> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione, fugit ipsum nesciunt quaerat cumque at dignissimos enim! Adipisci consectetur animi iure similique. Consectetur neque rem harum molestiae, beatae odio eius dignissimos, recusandae est quod pariatur provident quam praesentium. A cumque aspernatur odio nisi debitis soluta vel fugiat suscipit voluptatem ipsa.</p>
+                </div>
+            </div> -->
+        </div>
+    </div>  
+
+    <div class="relative w-[50vw] h-10 bg-transparent flex items-center justify-center text-black">
+        <div id="slideShowButtons" class="absolute flex justify-center items-center gap-3">
+            
+            <!-- <button onclick="slideShow(2)">
+                <svg id="i2" xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" class="w-5 h-5 opacity-50 hover:opacity-70 duration-500">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </button>-->
+
+        </div>
+    </div>
+</div>
+    
+    <div class="w-[100vw] flex items-center justify-center">
+        <div class="md:w-[80vw] w-[90vw] min-h-[70vh] my-10">
+            {% for anunt in anunturi_text %}
+                {% if forloop.counter == 1 %}
+                    <h1 class="font-noto md:text-3xl text-2xl text-[#762424] py-4">
+                        {{anunt.titlu}}
+                    </h1>
+                    <p class="indent-8 md:text-xl text-lg pb-4">
+                        {{anunt.text}} 
+                    </p>
+                {% else %}
+                    <div class="w-[90vw] border-b-2 border-[#762424] -translate-x-[5vw]"></div>
+                    <h1 class="font-noto md:text-3xl text-2xl text-[#762424] py-4">
+                        {{anunt.titlu}}
+                    </h1>
+                    <p class="indent-8 md:text-xl text-lg pb-4">
+                        {{anunt.text}} 
+                    </p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+{% else %}
+
+<div class="relative flex flex-col justify-center items-center h-full pt-20">
+    <div id="container" class="md:w-[50vw] w-[90vw] rounded-xl text-black shadow-2xl" style="overflow:hidden;">
+        <div id="slideShow" class="md:w-[300vw] w-[540vw] h-[50vh] flex duration-500">
+            
+            <div id="singleSlide" class="md:w-[50vw] w-[90vw] h-[50vh] flex">
+                <div class="w-full p-4 bg-[#f4f8fb] flex flex-col justify-center items-center gap-3">
+                    {% if tip == "Anunțuri" %}
+                        <p class="w-[80%] md:text-3xl text-xl font-noto text-[#762424] flex justify-center">Momentan nu sunt anunțuri</p>
+                    {% elif tip == "Concursuri de angajare" %}
+                        <p class="w-[80%] md:text-3xl text-xl font-noto text-[#762424] flex justify-center">Momentan nu sunt concursuri de angajare</p>
+                    {% endif %}
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="relative w-[50vw] h-10 bg-transparent flex items-center justify-center text-black">
+        <div id="slideShowButtons" class="absolute flex justify-center items-center gap-3">
+            
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock content %}  
+    

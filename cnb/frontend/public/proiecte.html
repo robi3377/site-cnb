@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{%block title%}
+<title>Proiecte</title>
+{%endblock title%}
+
+
+{% block content %}
+
+<div class="flex flex-wrap justify-center items-center min-h-[80vh] w-[100vw] font-roboto pt-20 text-lg pb-4">
+    <div class="md:w-[70vw] w-[90vw] flex flex-wrap justify-center items-center gap-5">
+    {% for proiect in proiecte %}
+        <a onmouseover="document.querySelector('#project{{proiect.id}}').style.color = 'black'"
+            onmouseleave="document.querySelector('#project{{proiect.id}}').style.color = 'gray'" href="/proiecte/{{proiect.titlu}}"
+            class="relative flex flex-col rounded-lg md:w-[22vw] md:h-[18vw] w-[300px] h-[200px] min-w-[300px] min-h-[200px] bg-center bg-cover bg-no-repeat duration-500">
+            <div class="h-[85%] w-full rounded-3xl shadow-2xl hover:scale-105 bg-center bg-contain bg-no-repeat duration-500" style="
+              overflow: hidden;
+              background-image: url({{proiect.emblema.url}});
+            "></div>
+            <div id="project{{proiect.id}}"
+                class="w-[100%] h-[15%] text-gray-600 hover:text-black flex justify-center items-center rounded-b-md duration-500">
+                {{proiect.titlu}}
+            </div>
+        </a>
+    {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

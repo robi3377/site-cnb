@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{%block title%}
+<title>{{nume}}</title>
+{%endblock title%}
+
+
+{% block content %}
+<!-- <div class="pt-16">
+    <div class="relative flex flex-col w-[100vw] h-[20vw] bg-cover bg-no-repeat bg-center" style="background-image:url({{proiect.emblema.url}});"></div>
+        <h1 class="font-noto text-3xl font-semibold text-[#123]">TEst</h1>
+        
+    </div>
+</div> -->
+
+<div class="bg-cover bg-center bg-no-repeat pt-20 -z-10 h-64" style="background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../assets/colegiul_banatean.jpg)"> </div>
+    <div class="w-[100vw] bg-[#F4F4F9] text-base pt-2 -z-5 flex flex-col items-center">
+        
+        
+        <div class="md:w-[80vw] w-[90vw]">
+            
+            <div class="w-[100%] min-h-[70vh] font-noto text-3xl font-semibold my-10 flex flex-col items-center">
+                <h1>{{nume}}</h1> 
+                {% for componenta in componente %}
+
+                <div class="w-[100vw] flex items-center justify-center">
+                    <div class="md:w-[80vw] w-[90vw] min-h-[10vh] mt-4">
+                      <h1 class="font-noto md:text-3xl text-2xl text-[#762424] pt-4">
+                        {{componenta.subtitlu}}
+                      </h1>
+                      <p class="indent-8 md:text-xl text-lg pb-4">
+                        {{componenta.paragraf}}
+                      </p>
+                    </div>
+                  </div>
+                  {% endfor %}
+
+                <div class="md:w-[80vw] w-[90vw] font-roboto text-lg font-extralight mt-10 grid md:grid-cols-2 grid-cols-1 gap-10">
+
+                    {% for doc, nume in documente %}
+                    <div class="flex gap-3 items-center">
+                        <a href="{{doc.document.url}}" target="_blank" class="w-[85px] h-[100px] shadow-xl rounded-xl bg-cover bg-center" style="background-image: url(https://img.freepik.com/icones-gratuites/pdf_318-187733.jpg);">
+                        </a>
+                        <a href="{{doc.document.url}}" target="_blank" >{{nume}}</a>
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
